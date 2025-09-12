@@ -1,7 +1,7 @@
 import ToDoListButton from "./ToDoListButton"
 
 function ToDoList(props) {
-    console.log(props.listBanyakk)
+    props.listBanyakk.sort((a, b) => b.id - a.id)
     return (
         <div className="wrapper">
             <ul>
@@ -9,8 +9,8 @@ function ToDoList(props) {
                     props.listBanyakk.map((item) => {
                         return (
                             <li>
-                                <div className='left'><button>✅</button></div>
-                                <div className='center'>{item.list} - {item.id}</div>
+                                <div className='left' onClick={()=>props.tandaSelesai(item.id)}><button>✅</button></div>
+                                <div className='center'>{item.list}</div>
                                 <div className='right'>
                                     <ToDoListButton />
                                 </div>

@@ -13,6 +13,17 @@ function App() {
     return jumlahList + 1
   }
 
+  const tandaSelesai = (id) => {
+    listBanyakk.map((item)=>{
+      if(item.id === id) {
+        console.log(item.id);
+        
+        console.log(item);
+      };
+      
+    })
+  }
+
   const addTask = (event) => {
     event.preventDefault()
     if (listBaru.current.value === '') {
@@ -33,7 +44,7 @@ function App() {
     <div>
       <>
         <Form addTask={addTask} listBaru={listBaru} />
-        <ToDoList listBanyakk={listBanyakk} />
+        <ToDoList listBanyakk={listBanyakk} tandaSelesai={tandaSelesai}/>
       </>
     </div>
   )
