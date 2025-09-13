@@ -7,23 +7,28 @@ import ToDoList from './components/ToDoList'
 function App() {
   const listBaru = useRef('');
   const [listBanyakk, setList] = useState([])
+  console.log(listBanyakk);
+  
 
   function setId() {
     const jumlahList = listBanyakk.length
     return jumlahList + 1
   }
-
+  
   const tandaSelesai = (id) => {
-    listBanyakk.map((item)=>{
+    let listItem = []
+    listBanyakk.map((item, index)=>{
       if(item.id === id) {
-        console.log(item.id);
-        
-        console.log(item);
+        listItem[index]={...item, completed: !item.completed}
+      } else {
+        listItem[index] = item
       };
-      
     })
+    setList(listItem)
+    console.log(listBanyakk);
+    
   }
-
+  
   const addTask = (event) => {
     event.preventDefault()
     if (listBaru.current.value === '') {
@@ -38,7 +43,7 @@ function App() {
     listBaru.current.value = ''
     setList([...listBanyakk, data])
   }
-
+  
 
   return (
     <div>

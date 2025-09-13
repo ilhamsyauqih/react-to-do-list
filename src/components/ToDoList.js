@@ -6,7 +6,7 @@ function ToDoList(props) {
         <div className="wrapper">
             <ul>
                 {
-                    props.listBanyakk.map((item) => {
+                    props.listBanyakk.map(function(item) {
                         return (
                             <li>
                                 <div className='left' onClick={()=>props.tandaSelesai(item.id)}><button>✅</button></div>
