@@ -25,8 +25,6 @@ function App() {
       };
     })
     setList(listItem)
-    console.log(listBanyakk);
-    
   }
   
   const addTask = (event) => {

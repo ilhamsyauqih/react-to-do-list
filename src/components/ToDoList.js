@@ -6,25 +6,26 @@ function ToDoList(props) {
         <div className="wrapper">
             <ul>
                 {
-                    props.listBanyakk.map(function(item) {
+                    props.listBanyakk.map(function (item) {
+                        let radioComplete = ''
+                        let classSelesai = ''
+                        if (item.completed == false) {
+                            radioComplete = '◻️';
+                        } else {
+                            radioComplete = '✅';
+                            classSelesai = 'strike'
+                        }
                         return (
                             <li>
-                                <div className='left' onClick={()=>props.tandaSelesai(item.id)}><button>✅</button></div>
-                                <div className='center'>{item.list}</div>
+                                <div className='left' onClick={() => props.tandaSelesai(item.id)}><button>{radioComplete}</button></div>
+                                <div className={`center ${classSelesai}`}>{item.list}</div>
                                 <div className='right'>
-                                    <ToDoListButton />
+                                    <ToDoListButton id={item.id} listBanyakk={props.listBanyakk} />
                                 </div>
                             </li>
                         )
                     })
                 }
-                <li>
-                    <div className='left'><button>◻️</button></div>
-                    <div className='center'>aaa</div>
-                    <div className='right'>
-                        <ToDoListButton />
-                    </div>
-                </li>
             </ul>
         </div>
     )
