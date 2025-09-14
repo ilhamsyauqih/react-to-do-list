@@ -9,6 +9,18 @@ function App() {
   const [listBanyakk, setList] = useState([])
   console.log(listBanyakk);
   
+  function pindahList(indexSekarang, updateIndex) {
+    const dataSekarang = listBanyakk[indexSekarang]
+    const dataUpdate = listBanyakk[updateIndex]
+
+    listBanyakk[indexSekarang] = {...dataSekarang, id: dataUpdate.id}
+    listBanyakk[updateIndex] = {...dataUpdate, id: dataSekarang.id}
+
+    const dataBaru = [...listBanyakk]
+    setList(dataBaru)
+    console.log(listBanyakk);
+    
+  }
 
   function setId() {
     const jumlahList = listBanyakk.length
@@ -47,7 +59,7 @@ function App() {
     <div>
       <>
         <Form addTask={addTask} listBaru={listBaru} />
-        <ToDoList listBanyakk={listBanyakk} tandaSelesai={tandaSelesai}/>
+        <ToDoList listBanyakk={listBanyakk} tandaSelesai={tandaSelesai} pindahList={pindahList}/>
       </>
     </div>
   )

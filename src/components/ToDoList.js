@@ -20,7 +20,7 @@ function ToDoList(props) {
                                 <div className='left' onClick={() => props.tandaSelesai(item.id)}><button>{radioComplete}</button></div>
                                 <div className={`center ${classSelesai}`}>{item.list}</div>
                                 <div className='right'>
-                                    <ToDoListButton id={item.id} listBanyakk={props.listBanyakk} />
+                                    <ToDoListButton id={item.id} listBanyakk={props.listBanyakk} pindahList={props.pindahList}/>
                                 </div>
                             </li>
                         )

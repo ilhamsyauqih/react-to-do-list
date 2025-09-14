@@ -9,14 +9,18 @@ function ToDoListButton(props) {
     let nextButton = '';
     if(props.listBanyakk[indexSebelum] != undefined){
         prevButton = '👆'
-    } 
+    }  else {
+        indexSebelum = '';
+    }
     if(props.listBanyakk[indexSetelah] != undefined){
         nextButton = '👇'
+    } else {
+        indexSetelah = ''
     }
     return (
         <>
-            <span><button>{prevButton}</button></span>
-            <span><button>{nextButton}</button></span>
+            <span><button onClick={() => props.pindahList(indexSekarang, indexSebelum)}>{prevButton}</button></span>
+            <span><button onClick={() => props.pindahList(indexSekarang, indexSetelah)}>{nextButton}</button></span>
             <span><button>🗑️</button></span>
         </>
     )
