@@ -21,7 +21,7 @@ function ToDoListButton(props) {
         <>
             <span><button onClick={() => props.pindahList(indexSekarang, indexSebelum)}>{prevButton}</button></span>
             <span><button onClick={() => props.pindahList(indexSekarang, indexSetelah)}>{nextButton}</button></span>
-            <span><button>🗑️</button></span>
+            <span><button onClick={() => props.hapus(props.id)}>🗑️</button></span>
         </>
     )
 }

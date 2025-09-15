@@ -10,16 +10,15 @@ function App() {
   console.log(listBanyakk);
   
   function pindahList(indexSekarang, updateIndex) {
-    const dataSekarang = listBanyakk[indexSekarang]
-    const dataUpdate = listBanyakk[updateIndex]
-
+    const dataSekarang = listBanyakk[indexSekarang] //Data dengan id ke 1 yakni syauqi
+    const dataUpdate = listBanyakk[updateIndex]  //Data dengan id ke 2 yakni Ilham
+    
     listBanyakk[indexSekarang] = {...dataSekarang, id: dataUpdate.id}
     listBanyakk[updateIndex] = {...dataUpdate, id: dataSekarang.id}
+    
 
     const dataBaru = [...listBanyakk]
     setList(dataBaru)
-    console.log(listBanyakk);
-    
   }
 
   function setId() {
@@ -53,13 +52,19 @@ function App() {
     listBaru.current.value = ''
     setList([...listBanyakk, data])
   }
+
+  const hapus = (id) => {
+    if(window.confirm('Apakah benar-benar ingin menghapus data ini?')) {
+      setList(listBanyakk.filter((item)=>item.id != id))
+    }
+  }
   
 
   return (
     <div>
       <>
         <Form addTask={addTask} listBaru={listBaru} />
-        <ToDoList listBanyakk={listBanyakk} tandaSelesai={tandaSelesai} pindahList={pindahList}/>
+        <ToDoList listBanyakk={listBanyakk} tandaSelesai={tandaSelesai} pindahList={pindahList} hapus={hapus}/>
       </>
     </div>
   )
